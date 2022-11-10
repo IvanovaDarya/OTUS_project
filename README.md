@@ -32,16 +32,10 @@
 ![image](https://user-images.githubusercontent.com/67660495/201095723-740f0e4d-6851-44f4-8a9f-0ef2b8be2ff9.png)
 
 # Перечень файлов проекта
-Подключение к СУБД
 
-```bash
-def insert_vulnerability_func():
-    ps_pg_hook = PostgresHook(postgres_conn_id="con_ya_postgresql")
-    conn_ps = ps_pg_hook.get_conn()
-    cursor = conn_ps.cursor()
 ```   
 
-###testcsv.py
+### testcsv.py
 https://github.com/IvanovaDarya/OTUS_project/blob/main/testcsv.py
 
 DAG, ообеспечивающий парсинг данных из источника с файлами *csv  и импорт в хранилище данных
@@ -69,3 +63,11 @@ DAG, ообеспечивающий парсинг данных из источ�
     start_date=days_ago(1)
 )
 ```
+
+#### Подключение к СУБД
+
+```bash
+def insert_vulnerability_func():
+    ps_pg_hook = PostgresHook(postgres_conn_id="con_ya_postgresql")
+    conn_ps = ps_pg_hook.get_conn()
+    cursor = conn_ps.cursor()

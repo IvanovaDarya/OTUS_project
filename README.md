@@ -32,6 +32,9 @@
 ![image](https://user-images.githubusercontent.com/67660495/201095723-740f0e4d-6851-44f4-8a9f-0ef2b8be2ff9.png)
 
 # Перечень файлов проекта
+## Подключение к СУБД
+
+
 ## testcsv.py
 DAG, ообеспечивающий парсинг данных из источника с файлами *csv  и импорт в хранилище данных
 
@@ -54,5 +57,16 @@ DAG, ообеспечивающий парсинг данных из источ�
 DAG, ообеспечивающий парсинг данных из источника с файлами  *xml и импорт в хранилище данных
 
 ```bash
-nano .terraformrc
+    context = minidom.parse(AIRFLOW_HOME + "/data/vlnb.xml")
+    elements = context.getElementsByTagName('Row')
+    count = 0
+    for elem in elements:
+        node = elem.getElementsByTagName('Data')
+        add = list()
+        if count > 1:
+            for v_data in node[0:8]:
+                add.append(v_data.firstChild.data)
+            cursor.execute(insert_data_query, add)
+        count += 1
+    conn_ps.commit()
 ```

@@ -36,7 +36,17 @@
 DAG, ообеспечивающий парсинг данных из источника с файлами *csv  и импорт в хранилище данных
 
 ```bash
-nano .terraformrc
+    with open(AIRFLOW_HOME + "/data/ext_list.csv", encoding="cp1251") as r_file:
+        file_reader = csv.reader(r_file)
+        for row in file_reader:
+          is_ext = re.match(r'[\*\.]\S+', row[0])
+          if is_ext != None:
+               clean_word = is_ext.group(0).lstrip('*').lstrip('.')
+              # print(clean_word)
+               add = (hashlib.md5(clean_word.encode('utf-8')).hexdigest(),
+                      clean_word)
+               cursor.execute(insert_data_query, add)
+        conn_ps.commit()
 ```
 
 

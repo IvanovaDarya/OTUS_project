@@ -33,7 +33,6 @@
 
 # Перечень файлов проекта
 
-```   
 
 ### testcsv.py
 https://github.com/IvanovaDarya/OTUS_project/blob/main/testcsv.py

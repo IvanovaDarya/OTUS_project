@@ -39,16 +39,6 @@ https://github.com/IvanovaDarya/OTUS_project/blob/main/testcsv.py
 
 DAG, ообеспечивающий парсинг данных из источника с файлами *csv  и импорт в хранилище данных
 
-```bash
-dag = DAG(
-    dag_id='vulnerability',
-    schedule_interval='*/30 * * * *',
-    #0 18 * */3 *
-    catchup = False,
-    start_date=days_ago(1)
-)
-    
-```
 
 ### testxml.py
 
@@ -56,14 +46,6 @@ https://github.com/IvanovaDarya/OTUS_project/blob/main/testxml.py
 
 DAG, ообеспечивающий парсинг данных из источника с файлами  *xml и импорт в хранилище данных
 
-```bash
-   dag = DAG(
-    dag_id='csv_parsing34',
-    schedule_interval='*/30 * * * *',
-    catchup = False,
-    start_date=days_ago(1)
-)
-```
 
 #### Подключение к СУБД
 

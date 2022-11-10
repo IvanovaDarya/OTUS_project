@@ -30,3 +30,19 @@
 ![image](https://user-images.githubusercontent.com/67660495/201095670-7af6cb70-abf2-45e6-b43e-eeabdac7d252.png)
 ![image](https://user-images.githubusercontent.com/67660495/201095689-44f953b5-d0a3-4946-a589-adfba6adfc9b.png)
 ![image](https://user-images.githubusercontent.com/67660495/201095723-740f0e4d-6851-44f4-8a9f-0ef2b8be2ff9.png)
+
+# Перечень файлов проекта
+## testcsv.py
+DAG, ообеспечивающий парсинг данных из источника с файлами *csv  и импорт в хранилище данных
+
+```bash
+nano .terraformrc
+```
+
+
+## testxml.py
+DAG, ообеспечивающий парсинг данных из источника с файлами  *xml и импорт в хранилище данных
+
+```bash
+nano .terraformrc
+```

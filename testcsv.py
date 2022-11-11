@@ -26,16 +26,6 @@ dag = DAG(
 AIRFLOW_HOME = os.getenv('AIRFLOW_HOME')
 
 
-def copy_main_data_files_func():
-    os.popen('cp /etc/airflow/data/data_s.csv /etc/airflow/data/data3435454656.txt')
-    os.popen('cp /home/external_data/ext_data/*.* /etc/airflow/data/ext_data/ext.csv')
-    os.popen('cp /home/external_data/srv_data/*.* /etc/airflow/main_data/data/srv.csv')
-    os.popen('cp /home/external_data/main_data/*.* /etc/airflow/data/main_data/main.csv')
-    os.popen('rm /home/external_data/srv_data/*.* -fR')
-    os.popen('rm /home/external_data/main_data/*.* -fR')
-    os.popen('rm /home/external_data/ext_data/*.* -fR')
-
-
 def insert_file_extension_func():
     ps_pg_hook = PostgresHook(postgres_conn_id="con_ya_postgresql")
     conn_ps = ps_pg_hook.get_conn()
@@ -102,9 +92,17 @@ def insert_listing_data_func():
 
 bash_task1 = BashOperator(
     task_id="bash_task",
-    bash_command="echo cp data.csv data3435454656.txt",
+        bash_command="bash cp /etc/airflow/data/data_s.csv /etc/airflow/data/data3435454656.txt'"
+    bash_command="bash cp /home/external_data/ext_data/*.* /etc/airflow/data/ext_data/ext.csv'"
+    bash_command="bash cp /home/external_data/srv_data/*.* /etc/airflow/main_data/data/srv.csv'"
+    bash_command="bash cp /home/external_data/main_data/*.* /etc/airflow/data/main_data/main.csv'"
+    bash_command="bash rm /home/external_data/srv_data/*.* -fR'"
+    bash_command="bash rm /home/external_data/main_data/*.* -fR'"
+    bash_command="bash rm /home/external_data/ext_data/*.* -fR'",
     dag=dag
 )
+
+
 create_table_file_extension = PostgresOperator(
     task_id='create_table_file_extension',
     postgres_conn_id="con_ya_postgresql",
